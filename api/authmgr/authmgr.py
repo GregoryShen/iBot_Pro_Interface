@@ -6,4 +6,4 @@ class Authmgr(RestClient):
         super(Authmgr, self).__init__(api_root_url, **kwargs)
 
     def login(self, **kwargs):
-        return self.post('/ibotpro/authmgr/auth!login.action', **kwargs)
+        return self.post('/managerEN/authmgr/auth!login.action', **kwargs)

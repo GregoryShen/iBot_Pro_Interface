@@ -3,11 +3,11 @@ import json as json_parser
 
 
 class RestClient:
-    def __init__(self, api_root_url, JSESSIONID=None):
+    def __init__(self, api_root_url, Cookie=None):
         self.api_root_url = api_root_url
         self.session = requests.Session()
-        if JSESSIONID:
-            self.session.cookies['JSESSIONID'] = JSESSIONID
+        if Cookie:
+            self.session.headers['Cookie'] = Cookie
 
     def get(self, url, **kwargs):
         return self.request(url, "get", **kwargs)
