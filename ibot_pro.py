@@ -1,5 +1,6 @@
 from api.authmgr.authmgr import Authmgr
 from api.unimgr.unimgr import Unimgr
+from api.mktmgr.welcomemsg import WelcomeMsg
 
 
 class IbotPro:
@@ -7,15 +8,16 @@ class IbotPro:
         self.api_root_url = api_root_url
         self.authmgr = Authmgr(self.api_root_url, **kwargs)
         self.unimgr = Unimgr(self.api_root_url, **kwargs)
+        self.mktmgr =
 
 
 if __name__ == '__main__':
-    ibotpro = IbotPro('http://hftest.demo.xiaoi.net')
+    ibotpro = IbotPro('http://172.16.8.117:8888')
     ibotpro.authmgr.session.headers['X-Requested-With'] = 'XMLHttpRequest'
     payload = {
-        'username': 'admin',
-        'password': '6a6b62c50f7d74bb7e1ce50959ff0b5c12bb7379',
-        'localLanguage': 'en_US',
+        'username': 'tests',
+        'password': '04d13fd0aa6f0197cf2c999019a607c36c81eb9f',
+        'localLanguage': 'zh_CN',
     }
     r = ibotpro.authmgr.login(data=payload)
     assert r.status_code == 200
@@ -25,12 +27,15 @@ if __name__ == '__main__':
     jsessionid = r.raw.headers['Set-Cookie'].split(' ')
     ck = []
     for item in jsessionid:
-        if "manager" in item:
-            ck.append(item)
-    ck_n = ' '.join(ck)
-    ibotpro = IbotPro("http://hftest.demo.xiaoi.net", Cookie=ck_n)
+        if "JSESSIONID" in item:
+            if ';' in item:
+                dex = item.index(';')
+            ck.append(item[:dex])
+    ck_n = ';'.join(ck)
+    print(ck_n)
+    ibotpro = IbotPro("http://172.16.8.117:8888", Cookie=ck_n)
     payload = {
-        "_dc": '1615216654523'
+        "_dc": '1615271320523s'
     }
     r = ibotpro.unimgr.get_sys_notfication(data=payload)
     assert r.status_code == 200

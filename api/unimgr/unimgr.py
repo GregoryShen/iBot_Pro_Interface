@@ -6,4 +6,4 @@ class Unimgr(RestClient):
         return self.get("/managerEN/unimgr/", **kwargs)
 
     def get_sys_notfication(self, **kwargs):
-        return self.get("/managerEN/unimgr/sys-notification!list.action", **kwargs)
+        return self.get("/ibotpro/unimgr/sys-notification!list.action", **kwargs)
