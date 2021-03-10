@@ -3,11 +3,11 @@ import json as json_parser
 
 
 class RestClient:
-    def __init__(self, api_root_url, Cookie=None):
+    def __init__(self, api_root_url, session=None):
         self.api_root_url = api_root_url
         self.session = requests.Session()
-        if Cookie:
-            self.session.headers['Cookie'] = Cookie
+        if session:
+            self.session = session
 
     def get(self, url, **kwargs):
         return self.request(url, "get", **kwargs)
@@ -49,6 +49,9 @@ class RestClient:
         if method_name == "delete":
             return process(self.session.delete(url, **kwargs))
 
+    def login(self, **kwargs):
+        return self.post('/ibotpro/authmgr/auth!login.action', **kwargs)
+
 
 def process(raw_response):
     response = Response()
@@ -67,9 +70,10 @@ class Response:
         self.content = None
         self.raw = None
 
+
 if __name__ == '__main__':
     r = RestClient('http://172.16.8.117:8888')
-    r.session.headers['X-Requested-With'] = 'XMLHttpRequest'
+    # r.session.headers['X-Requested-With'] = 'XMLHttpRequest'
     payload = {
         'username': 'tests',
         'password': '04d13fd0aa6f0197cf2c999019a607c36c81eb9f',
