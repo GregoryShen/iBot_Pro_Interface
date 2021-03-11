@@ -50,7 +50,7 @@ class RestClient:
             return process(self.session.delete(url, **kwargs))
 
     def login(self, **kwargs):
-        return self.post('/ibotpro/authmgr/auth!login.action', **kwargs)
+        return self.post('/authmgr/auth!login.action', **kwargs)
 
 
 def process(raw_response):

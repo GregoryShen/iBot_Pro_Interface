@@ -20,16 +20,19 @@ class IbotPro:
 
 if __name__ == '__main__':
     payload = {
-        'username': 'tests',
-        'password': '04d13fd0aa6f0197cf2c999019a607c36c81eb9f',
+        'username': 'admin',
+        'password': 'd033e22ae348aeb5660fc2140aec35850c4da997',
         'localLanguage': 'zh_CN',
     }
-    ibotpro = IbotPro("http://172.16.8.117:8888", payload)
-    payload_1 = {
-        'page': 1,
-        'start': 0,
-        'limit': 10
+    ibotpro = IbotPro("http://172.16.9.254:84/pro", payload)
+    dt = {
+        "type": "1",
+        "title": "test",
+        "welcome": "test",
+        "platform": "web",
+        "semantic": "M1D2"
     }
-
-    r = ibotpro.mktmgr.welcome_msg.list_welcome_msg(json=payload)
-    assert r.status_code == 200
+    dt = json_parser.dumps(dt)
+    payload = {"data": dt}
+    r = ibotpro.mktmgr.welcome_msg.save_welcome_msg(data=payload)
+    print(r.content)

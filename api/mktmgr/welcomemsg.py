@@ -4,29 +4,29 @@ from core.restclient import RestClient
 class WelcomeMsg(RestClient):
 
     def list_welcome_msg(self, **kwargs):
-        return self.get("/ibotpro/mktmgr/welcome-resource!list.action",
+        return self.get("/mktmgr/welcome-resource!list.action",
                         **kwargs)
 
     def save_welcome_msg(self, **kwargs):
-        return self.post("/ibotpro/mktmgr/welcome-resource!save.action",
+        return self.post("/mktmgr/welcome-resource!save.action",
                          **kwargs)
 
     def delete_welcome_msg(self, **kwargs):
-        return self.post("/ibotpro/mktmgr/welcome-resource!delete.action",
+        return self.post("/mktmgr/welcome-resource!delete.action",
                          **kwargs)
 
     def apply_welcome_msg(self, **kwargs):
-        return self.get("/ibotpro/mktmgr/welcome-resource!apply.action",
+        return self.get("/mktmgr/welcome-resource!apply.action",
                         **kwargs)
 
     def export_welcome_msg(self, **kwargs):
-        return self.get("/ibotpro/mktmgr/welcome-resource!export.action",
+        return self.get("/mktmgr/welcome-resource!export.action",
                         **kwargs)
 
     def import_welcome_msg(self, **kwargs):
-        return self.post("/ibotpro/mktmgr/welcome-resource!_import.action",
+        return self.post("/mktmgr/welcome-resource!_import.action",
                          **kwargs)
 
     def list_welcome_msg_dim(self, **kwargs):
-        return self.get("/ibotpro/mktmgr/welcome-resource!listDimenstion\
-                        .action", **kwargs)
+        return self.get("/mktmgr/welcome-resource!listDimenstion.action",
+                        **kwargs)
