@@ -1,0 +1,53 @@
+{
+  "test_list_welcome_msg": [
+    {
+      "case": "特殊欢迎语列表展示默认参数",
+      "payload": {
+        "welcome": null,
+        "type": null,
+        "platform": null,
+        "page": 1,
+        "start": 0,
+        "limit": 10
+      },
+      "expected": {
+        "status_code": 200,
+        "success": true
+      }
+    },
+    {
+      "case": "第二个case占位",
+      "payload": {
+        "welcome": null,
+        "type": null,
+        "platform": null,
+        "page": 1,
+        "start": 0,
+        "limit": 10
+      },
+      "expected": {
+
+      }
+    }
+  ],
+  "test_save_welcome_msg": [
+    {
+      "case": "新增特殊欢迎语",
+      "payload":{
+
+      },
+      "expected": {
+
+      }
+    },
+    {
+      "case": "新增特殊欢迎语2",
+      "payload": {
+
+      },
+      "expected": {
+
+      }
+    }
+  ]
+}
